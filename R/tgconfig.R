@@ -108,7 +108,7 @@ set_param <- function(param, value, package=NULL){
 	if (param %in% params){
 		set_config(param, value, package)
 	} else {
-		stop(sprintf('paramter %s is not registered in package "%s"', param, package))
+		stop(sprintf('parameter %s is not registered in package "%s"', param, package))
 	}
 }
 
@@ -146,7 +146,7 @@ list_package_params <- function(package){
 	names(config[[package]])
 }
 
-#' Check if package has a paramter
+#' Check if package has a parameter
 #' @param param parameter
 #'
 #' @param package package
@@ -162,7 +162,7 @@ has_param <- function(param, package=NULL){
 	return(!is.null(get_param(param=param, package=package)))
 }
 
-#' Register a paramter to package
+#' Register a parameter to package
 #'
 #' @param param parameter to register
 #'
@@ -184,7 +184,7 @@ register_param <- function(param, package=NULL, default_value=NA){
 
 #' Override pre-set parameters from config file
 #'
-#' @param config_file yaml file with paramters and values
+#' @param config_file yaml file with parameters and values
 #'
 #' @param package package
 #'
@@ -212,7 +212,7 @@ override_params <- function(config_file, package=NULL){
 
 #' Register parameters from config file
 #'
-#' @param config_file yaml file with paramters and values
+#' @param config_file yaml file with parameters and values
 #'
 #' @param package package
 #'
