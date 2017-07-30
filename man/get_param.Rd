@@ -19,3 +19,17 @@ value of \code{param} in package \code{package} and \code{fallback} if parameter
 \description{
 Get package parameter
 }
+\examples{
+
+register_param('param1', 'tgconfig')
+set_param('param1', 'value1', 'tgconfig')
+get_param('param1', 'tgconfig')
+
+# try to get a parameter that doesn't exist
+get_param('other_param', 'tgconfig')
+
+# sometimes we want to throw and error if the parameter doesn't exist
+get_param('other_param', 'tgconfig', fallback=stop())
+
+
+}

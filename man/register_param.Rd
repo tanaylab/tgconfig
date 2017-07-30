@@ -16,3 +16,8 @@ register_param(param, package = NULL, default_value = NA)
 \description{
 Register a paramter to package
 }
+\examples{
+register_param('param1', 'tgconfig')
+get_package_parame('tgconfig')
+
+}

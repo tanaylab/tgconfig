@@ -14,3 +14,9 @@ register_params(config_file, package = NULL)
 \description{
 Register parameters from config file
 }
+\examples{
+config_file <- example_config_file()
+register_params(config_file, 'tgconfig')
+get_package_params('tgconfig')
+
+}

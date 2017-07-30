@@ -16,3 +16,15 @@ set_param(param, value, package = NULL)
 \description{
 Set package parameter
 }
+\examples{
+register_param('param1', 'tgconfig')
+set_param('param1', 'value1', 'tgconfig')
+get_param('param1', 'tgconfig')
+
+# try to set a parameter that doesn't exist
+set_param('other_param', 'tgconfig')
+
+}
+\seealso{
+register_param, get_param
+}

@@ -14,3 +14,12 @@ override_params(config_file, package = NULL)
 \description{
 Override pre-set parameters from config file
 }
+\examples{
+config_file <- example_config_file()
+register_params(config_file, 'tgconfig')
+get_package_params('tgconfig')
+override_params(system.file('config/override_example.yaml', package='tgconfig'))
+get_package_params('tgconfig')
+
+
+}
