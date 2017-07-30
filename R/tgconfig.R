@@ -62,6 +62,27 @@ get_param <- function(param, package=NULL, fallback=NULL){
 	}
 }
 
+#' Get package parameters and return error if they do not exist
+#' 
+#' @inheritParams get_param
+#' 
+#' @return value of \code{param} in package \code{package} and error if parameter no found
+#' 
+#' @examples
+#' 
+#' register_param('param1', 'tgconfig')
+#' set_param('param1', 'value1', 'tgconfig')
+#' get_param_strict('param1', 'tgconfig')
+#'
+#' # try to get a parameter that doesn't exist
+#' get_param_strict('other_param', 'tgconfig')
+#' 
+#' 
+#' @export
+get_param_strict <- function(param, package=NULL){
+	get_param(param, package=package, fallback=stop(sprintf('there is no parameter "%s" in package "%s"', param, package)))
+}
+
 #' Set package parameter
 #' @param param parameter to set. An error would be thrown if parameter is not registered.
 #'
