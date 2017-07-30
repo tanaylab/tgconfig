@@ -15,3 +15,11 @@ names of package parameters. NULL if \code{package} has no parameters
 \description{
 List package parameters
 }
+\examples{
+register_param('param1', 'tgconfig')
+register_param('param2', 'tgconfig')
+set_param('param1', 'value1', 'tgconfig')
+set_param('param2', 'value2', 'tgconfig')
+list_package_params('tgconfig')
+
+}

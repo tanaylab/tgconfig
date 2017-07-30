@@ -14,3 +14,9 @@ has_param(param, package = NULL)
 \description{
 Check if package has a paramter
 }
+\examples{
+register_param('param1', 'tgconfig')
+has_param('param1', 'tgconfig')
+has_param('param2', 'tgconfig')
+
+}
