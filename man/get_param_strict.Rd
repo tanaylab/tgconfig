@@ -24,7 +24,7 @@ set_param('param1', 'value1', 'tgconfig')
 get_param_strict('param1', 'tgconfig')
 
 # try to get a parameter that doesn't exist
-get_param_strict('other_param', 'tgconfig')
+# get_param_strict('other_param', 'tgconfig') # would throw an error
 
 
 }

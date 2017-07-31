@@ -18,6 +18,6 @@ Register a parameter to package
 }
 \examples{
 register_param('param1', 'tgconfig')
-get_package_parame('tgconfig')
+get_package_params('tgconfig')
 
 }

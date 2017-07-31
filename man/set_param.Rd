@@ -22,7 +22,7 @@ set_param('param1', 'value1', 'tgconfig')
 get_param('param1', 'tgconfig')
 
 # try to set a parameter that doesn't exist
-set_param('other_param', 'tgconfig')
+# set_param('other_param', 'tgconfig') # would thorw an error
 
 }
 \seealso{

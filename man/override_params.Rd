@@ -18,7 +18,7 @@ Override pre-set parameters from config file
 config_file <- example_config_file()
 register_params(config_file, 'tgconfig')
 get_package_params('tgconfig')
-override_params(system.file('config/override_example.yaml', package='tgconfig'))
+override_params(system.file('config/override_example.yaml', package='tgconfig'), package='tgconfig')
 get_package_params('tgconfig')
 
 
