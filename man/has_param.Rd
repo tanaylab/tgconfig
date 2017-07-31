@@ -2,7 +2,7 @@
 % Please edit documentation in R/tgconfig.R
 \name{has_param}
 \alias{has_param}
-\title{Check if package has a paramter}
+\title{Check if package has a parameter}
 \usage{
 has_param(param, package = NULL)
 }
@@ -12,7 +12,7 @@ has_param(param, package = NULL)
 \item{package}{package}
 }
 \description{
-Check if package has a paramter
+Check if package has a parameter
 }
 \examples{
 register_param('param1', 'tgconfig')
