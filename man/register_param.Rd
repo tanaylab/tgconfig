@@ -2,7 +2,7 @@
 % Please edit documentation in R/tgconfig.R
 \name{register_param}
 \alias{register_param}
-\title{Register a paramter to package}
+\title{Register a parameter to package}
 \usage{
 register_param(param, package = NULL, default_value = NA)
 }
@@ -14,7 +14,7 @@ register_param(param, package = NULL, default_value = NA)
 \item{default_value}{default value of the parameter (default: NA)}
 }
 \description{
-Register a paramter to package
+Register a parameter to package
 }
 \examples{
 register_param('param1', 'tgconfig')
