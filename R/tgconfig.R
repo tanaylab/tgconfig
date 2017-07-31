@@ -160,6 +160,43 @@ has_param <- function(param, package=NULL){
 	return(!is.null(get_param(param=param, package=package)))
 }
 
+#' Remove parameter
+#'
+#' @param param parameter to remove
+#' @param package package
+#'
+#' @export
+#'
+#' @examples
+#' register_param('param1', 'tgconfig')
+#' get_param('param1', 'tgconfig')
+#' rm_param('param1', 'tgconfig')
+#' has_param('param1', 'tgconfig')
+rm_param <- function(param, package=NULL){
+	package <- package %||% guess_package(parent.frame(n=2))
+	if (has_param(param, package)){
+		config[[package]][[param]] <- NULL
+	} else {
+		stop(sprintf('paramter "%s" does not exist in package "%s', param, package))
+	}
+}
+
+#' Remove all package parameters
+#'
+#' @param package package
+#'
+#' @export
+#' @examples
+#' config_file <- example_config_file()
+#' register_params(config_file, 'tgconfig')
+#' get_package_params('tgconfig')
+#' rm_package_params('tgconfig')
+#' get_package_params('tgconfig')
+rm_package_params <- function(package=NULL){
+	package <- package %||% guess_package(parent.frame(n=2))
+	config[[package]] <- NULL
+}
+
 #' Register a parameter to package
 #'
 #' @param param parameter to register

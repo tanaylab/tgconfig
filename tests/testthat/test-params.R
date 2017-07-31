@@ -60,3 +60,16 @@ test_that('load_params_to_env loads parameters to env', {
 	expect_equal(numeric_param, 700)
 	expect_equal(boolean_param, FALSE)
 })
+
+test_that('a parameter can be removed', {
+	register_param('param1', 'tgconfig')	
+	rm_param('param1', 'tgconfig')
+	expect_false(has_param('param1', 'tgconfig'))
+})
+
+test_that('all parameters can be removed', {
+	config_file <- example_config_file()
+	register_params(config_file, 'tgconfig')	
+	rm_package_params('tgconfig')
+	expect_null(get_package_params('tgconfig'))
+})
