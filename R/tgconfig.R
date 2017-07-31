@@ -169,7 +169,7 @@ has_param <- function(param, package=NULL){
 #'
 #' @examples
 #' register_param('param1', 'tgconfig')
-#' get_param('param1', 'tgconfig')
+#' has_param('param1', 'tgconfig')
 #' rm_param('param1', 'tgconfig')
 #' has_param('param1', 'tgconfig')
 rm_param <- function(param, package=NULL){
