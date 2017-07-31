@@ -7,7 +7,7 @@
 override_params(config_file, package = NULL)
 }
 \arguments{
-\item{config_file}{yaml file with paramters and values}
+\item{config_file}{yaml file with parameters and values}
 
 \item{package}{package}
 }

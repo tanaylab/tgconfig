@@ -3,7 +3,7 @@ tgconfig
 
 The goal of tgconfig is to provide infrastructure for managing package parameters.
 
-Parameters are be easy to get in relevant functions within a package:
+Parameters are easy to get in relevant functions within a package:
 
 ``` r
 library(tgconfig)
@@ -20,7 +20,7 @@ get_param_strict('another', 'scrdb')
 #> Error in get_param(param, package = package, fallback = stop(sprintf("there is no parameter \"%s\" in package \"%s\"", : there is no parameter "another" in package "scrdb"
 ```
 
-Developers are able to regiter parameters and set their default value in a config file that is part of the package in YAML format:
+Developers are able to register parameters and set their default value in a config file that is part of the package in YAML format:
 
 ``` yaml
 char_param: value
@@ -49,7 +49,7 @@ get_package_params('scrdb')
 #> [1] TRUE
 ```
 
-Users are able to overide parameters using their own YAML:
+Users are able to override parameters using their own YAML:
 
 ``` r
 override_params(system.file('config/override_example.yaml', package='tgconfig'), package='scrdb')
