@@ -4,7 +4,7 @@
 \alias{load_params_to_env}
 \title{Load parameters to current environment}
 \usage{
-load_params_to_env(params, package, envir = parent.frame())
+load_params_to_env(params, package = NULL, envir = parent.frame())
 }
 \arguments{
 \item{params}{parameters to load}
@@ -14,7 +14,7 @@ load_params_to_env(params, package, envir = parent.frame())
 \item{envir}{environment to load to}
 }
 \value{
-invisibly the changed environment
+invisibly returns the changed environment
 }
 \description{
 Load paramters as variables to the current environment (or any other environment \code{envir})

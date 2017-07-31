@@ -60,21 +60,24 @@ boolean_param: false
 
 ``` r
 override_params(system.file('config/override_example.yaml', package='tgconfig'), package='scrdb')
+#> Warning in file(con, "r"): file("") only supports open = "w+" and open = "w
+#> +b": using the former
+#> Error in if (param %in% params) {: argument is of length zero
 get_package_params('scrdb')
 #> $param
 #> [1] "value"
 #> 
 #> $char_param
-#> [1] "user_char"
+#> [1] "value"
 #> 
 #> $expr_param
-#> [1] "user_exp"
+#> [1] 1 2 3 4 5
 #> 
 #> $numeric_param
-#> [1] 700
+#> [1] 500
 #> 
 #> $boolean_param
-#> [1] FALSE
+#> [1] TRUE
 ```
 
 Users get an exception when trying to override a parameter that was not registered:
@@ -88,9 +91,8 @@ Users can load multiple parameters to the current environment:
 
 ``` r
 load_params_to_env(c('expr_param', 'boolean_param'), 'scrdb')
-
 expr_param
-#> [1] "user_exp"
+#> [1] 1 2 3 4 5
 boolean_param
-#> [1] FALSE
+#> [1] TRUE
 ```

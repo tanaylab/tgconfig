@@ -18,8 +18,6 @@ get_config <- function(param, package){
 #'
 #' @return name of the package the code is invoked from, and NULL if it is not run from a package
 #'
-#' @examples
-#' guess_package(environment())
 guess_package <- function(env){
 	package <- utils::packageName(env=parent.frame(n=2))
 	if (is.null(package)){
@@ -48,7 +46,7 @@ guess_package <- function(env){
 #' get_param('other_param', 'tgconfig')
 #'
 #' # sometimes we want to throw and error if the parameter doesn't exist
-#' get_param('other_param', 'tgconfig', fallback=stop())
+#' # get_param('other_param', 'tgconfig', fallback=stop()) # would trow and error
 #'
 #'
 #' @export
@@ -75,7 +73,7 @@ get_param <- function(param, package=NULL, fallback=NULL){
 #' get_param_strict('param1', 'tgconfig')
 #'
 #' # try to get a parameter that doesn't exist
-#' get_param_strict('other_param', 'tgconfig')
+#' # get_param_strict('other_param', 'tgconfig') # would throw an error
 #'
 #'
 #' @export
@@ -95,7 +93,7 @@ get_param_strict <- function(param, package=NULL){
 #' get_param('param1', 'tgconfig')
 #'
 #' # try to set a parameter that doesn't exist
-#' set_param('other_param', 'tgconfig')
+#' # set_param('other_param', 'tgconfig') # would thorw an error
 #'
 #' @seealso register_param, get_param
 #'
@@ -171,7 +169,7 @@ has_param <- function(param, package=NULL){
 #'
 #' @examples
 #' register_param('param1', 'tgconfig')
-#' get_package_parame('tgconfig')
+#' get_package_params('tgconfig')
 #'
 #' @export
 register_param <- function(param, package=NULL, default_value=NA){
@@ -194,7 +192,7 @@ register_param <- function(param, package=NULL, default_value=NA){
 #' config_file <- example_config_file()
 #' register_params(config_file, 'tgconfig')
 #' get_package_params('tgconfig')
-#' override_params(system.file('config/override_example.yaml', package='tgconfig'))
+#' override_params(system.file('config/override_example.yaml', package='tgconfig'), package='tgconfig')
 #' get_package_params('tgconfig')
 #'
 #'
@@ -246,7 +244,7 @@ register_params <- function(config_file, package=NULL){
 #' @param package package
 #' @param envir environment to load to
 #'
-#' @return invisibly the changed environment
+#' @return invisibly returns the changed environment
 #'
 #'
 #' @examples
@@ -257,7 +255,9 @@ register_params <- function(config_file, package=NULL){
 #' boolean_param
 #'
 #' @export
-load_params_to_env <- function(params, package, envir=parent.frame()){
+load_params_to_env <- function(params, package=NULL, envir=parent.frame()){
+	package <- package %||% guess_package(parent.frame(n=2))
+
 	params_list <- list()
 	for (param in params){
 		params_list[[param]] <- get_param_strict(param, package=package)

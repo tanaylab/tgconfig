@@ -15,6 +15,3 @@ name of the package the code is invoked from, and NULL if it is not run from a p
 \description{
 Guess package the code is invoked from
 }
-\examples{
-guess_package(environment())
-}

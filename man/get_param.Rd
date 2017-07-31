@@ -29,7 +29,7 @@ get_param('param1', 'tgconfig')
 get_param('other_param', 'tgconfig')
 
 # sometimes we want to throw and error if the parameter doesn't exist
-get_param('other_param', 'tgconfig', fallback=stop())
+# get_param('other_param', 'tgconfig', fallback=stop()) # would trow and error
 
 
 }
