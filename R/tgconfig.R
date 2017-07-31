@@ -176,7 +176,9 @@ has_param <- function(param, package=NULL){
 #' @export
 register_param <- function(param, package=NULL, default_value=NA){
 	package <- package %||% guess_package(parent.frame(n=2))
-	set_config(param, default_value, package)
+	if (!has_param(param, package)){
+		set_config(param, default_value, package)	
+	}		
 }
 
 
