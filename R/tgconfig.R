@@ -63,21 +63,21 @@ get_param <- function(param, package=NULL, fallback=NULL){
 }
 
 #' Get package parameters and return error if they do not exist
-#' 
+#'
 #' @inheritParams get_param
-#' 
+#'
 #' @return value of \code{param} in package \code{package} and error if parameter no found
-#' 
+#'
 #' @examples
-#' 
+#'
 #' register_param('param1', 'tgconfig')
 #' set_param('param1', 'value1', 'tgconfig')
 #' get_param_strict('param1', 'tgconfig')
 #'
 #' # try to get a parameter that doesn't exist
 #' get_param_strict('other_param', 'tgconfig')
-#' 
-#' 
+#'
+#'
 #' @export
 get_param_strict <- function(param, package=NULL){
 	get_param(param, package=package, fallback=stop(sprintf('there is no parameter "%s" in package "%s"', param, package)))
@@ -177,8 +177,8 @@ has_param <- function(param, package=NULL){
 register_param <- function(param, package=NULL, default_value=NA){
 	package <- package %||% guess_package(parent.frame(n=2))
 	if (!has_param(param, package)){
-		set_config(param, default_value, package)	
-	}		
+		set_config(param, default_value, package)
+	}
 }
 
 
@@ -234,6 +234,35 @@ register_params <- function(config_file, package=NULL){
 			register_param(params[i], default_value=conf[[params[i]]], package=package)
 		}
 	}
+}
+
+
+#' Load parameters to current environment
+#'
+#' Load paramters as variables to the current environment (or any other environment \code{envir})
+#'
+#'
+#' @param params parameters to load
+#' @param package package
+#' @param envir environment to load to
+#'
+#' @return invisibly the changed environment
+#'
+#'
+#' @examples
+#' register_params(example_config_file(), 'tgconfig')
+#' get_package_params('tgconfig')
+#' load_params_to_env(c('expr_param', 'boolean_param'), 'tgconfig')
+#' expr_param
+#' boolean_param
+#'
+#' @export
+load_params_to_env <- function(params, package, envir=parent.frame()){
+	params_list <- list()
+	for (param in params){
+		params_list[[param]] <- get_param_strict(param, package=package)
+	}
+	invisible(list2env(params_list, envir=envir))
 }
 
 #' Get example config file path

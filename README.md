@@ -51,6 +51,13 @@ get_package_params('scrdb')
 
 Users are able to override parameters using their own YAML:
 
+``` yaml
+char_param: 'user_char'
+expr_param: 'user_exp'
+numeric_param: 700
+boolean_param: false
+```
+
 ``` r
 override_params(system.file('config/override_example.yaml', package='tgconfig'), package='scrdb')
 get_package_params('scrdb')
@@ -70,9 +77,9 @@ get_package_params('scrdb')
 #> [1] FALSE
 ```
 
-Users get an exception when trying to override a parameters that was not registered:
+Users get an exception when trying to override a parameter that was not registered:
 
 ``` r
 set_param('other_param', 'value', 'scrdb')
-#> Error in set_param("other_param", "value", "scrdb"): paramter other_param is not registered in package "scrdb"
+#> Error in set_param("other_param", "value", "scrdb"): parameter other_param is not registered in package "scrdb"
 ```
