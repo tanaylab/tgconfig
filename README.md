@@ -83,3 +83,14 @@ Users get an exception when trying to override a parameter that was not register
 set_param('other_param', 'value', 'scrdb')
 #> Error in set_param("other_param", "value", "scrdb"): parameter other_param is not registered in package "scrdb"
 ```
+
+Users can load multiple parameters to the current environment:
+
+``` r
+load_params_to_env(c('expr_param', 'boolean_param'), 'scrdb')
+
+expr_param
+#> [1] "user_exp"
+boolean_param
+#> [1] FALSE
+```
