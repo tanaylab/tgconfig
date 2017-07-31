@@ -30,6 +30,10 @@ reference:
   - has_param
   - list_package_params
   - get_package_params
+- title: Remove parameters
+  contents: 
+  - rm_param
+  - rm_package_params
 - title: Config files  
   contents: 
   - dump_example_config
