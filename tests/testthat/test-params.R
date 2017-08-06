@@ -73,3 +73,21 @@ test_that('all parameters can be removed', {
 	rm_package_params('tgconfig')
 	expect_null(get_package_params('tgconfig'))
 })
+
+test_that('guess package correctly', {
+	register_params(example_config_file())
+	temp_func <- function(){
+		return(get_param('char_param'))
+	}
+	param <- temp_func()
+	expect_equal(param, 'value')
+})
+
+test_that('guess package correctly from param list', {
+	register_params(example_config_file())
+	temp_func <- function(param = get_param('char_param')){
+		return(param)
+	}
+	param <- temp_func()
+	expect_equal(param, 'value')
+})
