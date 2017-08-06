@@ -18,6 +18,12 @@ knitr::opts_chunk$set(
 
 The goal of tgconfig is to provide infrastructure for managing package parameters. 
 
+## Code 
+
+code can be found at https://bitbucket.org/tanaylab/tgconfig
+
+## Usage
+
 Parameters are easy to get in relevant functions within a package:
 
 ```{r example}
@@ -71,4 +77,6 @@ load_params_to_env(c('expr_param', 'boolean_param'), 'scrdb')
 expr_param
 boolean_param
 ```
+
+## Usage in a package
 
