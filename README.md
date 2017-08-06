@@ -3,6 +3,14 @@ tgconfig
 
 The goal of tgconfig is to provide infrastructure for managing package parameters.
 
+Code
+----
+
+code can be found at <https://bitbucket.org/tanaylab/tgconfig>
+
+Usage
+-----
+
 Parameters are easy to get in relevant functions within a package:
 
 ``` r
@@ -60,24 +68,21 @@ boolean_param: false
 
 ``` r
 override_params(system.file('config/override_example.yaml', package='tgconfig'), package='scrdb')
-#> Warning in file(con, "r"): file("") only supports open = "w+" and open = "w
-#> +b": using the former
-#> Error in if (param %in% params) {: argument is of length zero
 get_package_params('scrdb')
 #> $param
 #> [1] "value"
 #> 
 #> $char_param
-#> [1] "value"
+#> [1] "user_char"
 #> 
 #> $expr_param
-#> [1] 1 2 3 4 5
+#> [1] "user_exp"
 #> 
 #> $numeric_param
-#> [1] 500
+#> [1] 700
 #> 
 #> $boolean_param
-#> [1] TRUE
+#> [1] FALSE
 ```
 
 Users get an exception when trying to override a parameter that was not registered:
@@ -92,7 +97,10 @@ Users can load multiple parameters to the current environment:
 ``` r
 load_params_to_env(c('expr_param', 'boolean_param'), 'scrdb')
 expr_param
-#> [1] 1 2 3 4 5
+#> [1] "user_exp"
 boolean_param
-#> [1] TRUE
+#> [1] FALSE
 ```
+
+Usage in a package
+------------------
