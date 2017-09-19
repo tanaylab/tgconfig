@@ -3,14 +3,21 @@ context("params")
 test_that("basic set and get works", {
 	register_param('param1', 'tgconfig')
 	set_param('param1', 'value1', 'tgconfig')
-	expect_equal(get_param('param1', 'tgconfig'), 'value1')  
+	expect_equal(get_param_strict('param1', 'tgconfig'), 'value1')  
 })
 
 test_that("set and get from package works", {
 	register_param('param2')
-	expect_equal(get_param('param2'), NA)
+	expect_equal(get_param_strict('param2'), NULL)
 	set_param('param2', 'value2')
-	expect_equal(get_param('param2'), 'value2')  
+	expect_equal(get_param_strict('param2'), 'value2')  
+})
+
+test_that("set and get NULL works", {
+	register_param('param_null')
+	expect_equal(get_param_strict('param_null'), NULL)
+	set_param('param_null', NULL)
+	expect_equal(get_param_strict('param_null'), NULL)
 })
 
 test_that("set without register fails", {	
@@ -25,26 +32,26 @@ test_that("get of non existing parameter", {
 
 test_that("register twice does not override", {	
 	register_param('param_override', default_value='defval')
-	expect_equal(get_param('param_override'), 'defval')
+	expect_equal(get_param_strict('param_override'), 'defval')
 	register_param('param_override', default_value='another')
-	expect_equal(get_param('param_override'), 'defval')	
+	expect_equal(get_param_strict('param_override'), 'defval')	
 })
 
 test_that("register from file works", {		
 	register_params(example_config_file())
-	expect_equal(get_param('char_param'), 'value')
-	expect_equal(get_param('expr_param'), seq(1:5))
-	expect_equal(get_param('numeric_param'), 500)
-	expect_equal(get_param('boolean_param'), TRUE)
+	expect_equal(get_param_strict('char_param'), 'value')
+	expect_equal(get_param_strict('expr_param'), seq(1:5))
+	expect_equal(get_param_strict('numeric_param'), 500)
+	expect_equal(get_param_strict('boolean_param'), TRUE)
 })
 
 test_that("override from file works", {		
 	register_params(example_config_file())
 	override_params(system.file('config/override_example.yaml', package='tgconfig'))
-	expect_equal(get_param('char_param'), 'user_char')
-	expect_equal(get_param('expr_param'), 'user_exp')
-	expect_equal(get_param('numeric_param'), 700)
-	expect_equal(get_param('boolean_param'), FALSE)
+	expect_equal(get_param_strict('char_param'), 'user_char')
+	expect_equal(get_param_strict('expr_param'), 'user_exp')
+	expect_equal(get_param_strict('numeric_param'), 700)
+	expect_equal(get_param_strict('boolean_param'), FALSE)
 })
 
 test_that("override from file with unknown params fails", {		
@@ -77,7 +84,7 @@ test_that('all parameters can be removed', {
 test_that('guess package correctly', {
 	register_params(example_config_file())
 	temp_func <- function(){
-		return(get_param('char_param'))
+		return(get_param_strict('char_param'))
 	}
 	param <- temp_func()
 	expect_equal(param, 'value')
@@ -85,7 +92,7 @@ test_that('guess package correctly', {
 
 test_that('guess package correctly from param list', {
 	register_params(example_config_file())
-	temp_func <- function(param = get_param('char_param')){
+	temp_func <- function(param = get_param_strict('char_param')){
 		return(param)
 	}
 	param <- temp_func()

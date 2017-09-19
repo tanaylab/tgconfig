@@ -5,7 +5,7 @@ set_config <- function(param, value, package){
 	if (is.null(config[[package]])){
 		config[[package]] <- list()
 	}
-	config[[package]][[param]] <- value
+	config[[package]][param] <- list(value)
 }
 
 get_config <- function(param, package){
@@ -52,11 +52,10 @@ guess_package <- function(env){
 #' @export
 get_param <- function(param, package=NULL, fallback=NULL){
 	package <- package %||% guess_package(parent.frame(n=2))
-	res <- get_config(param, package)
-	if (is.null(res)){
-		fallback
+	if (param %in% list_package_params(package)) {
+		get_config(param, package)
 	} else {
-		res
+		fallback
 	}
 }
 
@@ -202,14 +201,14 @@ rm_package_params <- function(package=NULL){
 #' @param param parameter to register
 #'
 #' @param package package to register parameter to
-#' @param default_value default value of the parameter (default: NA)
+#' @param default_value default value of the parameter (default: NULL)
 #'
 #' @examples
 #' register_param('param1', 'tgconfig')
 #' get_package_params('tgconfig')
 #'
 #' @export
-register_param <- function(param, package=NULL, default_value=NA){
+register_param <- function(param, package=NULL, default_value=NULL){
 	package <- package %||% guess_package(parent.frame(n=2))
 	if (!has_param(param, package)){
 		set_config(param, default_value, package)
