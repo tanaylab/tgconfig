@@ -1,5 +1,10 @@
 context("params")
 
+test_that("registering a param works", {
+	register_param('param0', 'tgconfig')
+	expect_equal(has_param('param0', 'tgconfig'), TRUE)  
+})
+
 test_that("basic set and get works", {
 	register_param('param1', 'tgconfig')
 	set_param('param1', 'value1', 'tgconfig')
@@ -69,7 +74,7 @@ test_that('load_params_to_env loads parameters to env', {
 })
 
 test_that('a parameter can be removed', {
-	register_param('param1', 'tgconfig')	
+	register_param('param1', 'tgconfig')
 	rm_param('param1', 'tgconfig')
 	expect_false(has_param('param1', 'tgconfig'))
 })
