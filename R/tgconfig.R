@@ -156,7 +156,7 @@ list_package_params <- function(package){
 #' @export
 has_param <- function(param, package=NULL){
 	package <- package %||% guess_package(parent.frame(n=2))
-	return(!is.null(get_param(param=param, package=package)))
+	return(param %in% list_package_params(package))
 }
 
 #' Remove parameter
