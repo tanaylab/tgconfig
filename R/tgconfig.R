@@ -237,7 +237,7 @@ override_params <- function(config_file, package=NULL){
 	package <- package %||% guess_package(parent.frame(n=2))
 
 	for (conf_file in config_file){
-		conf <- yaml::yaml.load_file(config_file)
+		conf <- yaml::yaml.load_file(config_file, eval.expr=TRUE)
 		params <- names(conf)
 		for (i in 1:length(conf)){
 			set_param(params[i], conf[[params[i]]], package=package)
@@ -262,7 +262,7 @@ register_params <- function(config_file, package=NULL){
 	package <- package %||% guess_package(parent.frame(n=2))
 
 	for (conf_file in config_file){
-		conf <- yaml::yaml.load_file(config_file)
+		conf <- yaml::yaml.load_file(config_file, eval.expr=TRUE)
 		params <- names(conf)
 		for (i in 1:length(conf)){
 			register_param(params[i], default_value=conf[[params[i]]], package=package)
