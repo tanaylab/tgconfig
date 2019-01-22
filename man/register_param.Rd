@@ -4,7 +4,8 @@
 \alias{register_param}
 \title{Register a parameter to package}
 \usage{
-register_param(param, package = NULL, default_value = NULL)
+register_param(param, package = NULL, default_value = NULL,
+  override = FALSE)
 }
 \arguments{
 \item{param}{parameter to register}
@@ -12,6 +13,8 @@ register_param(param, package = NULL, default_value = NULL)
 \item{package}{package to register parameter to}
 
 \item{default_value}{default value of the parameter (default: NULL)}
+
+\item{override}{override current loaded parameters}
 }
 \description{
 Register a parameter to package

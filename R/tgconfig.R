@@ -202,15 +202,16 @@ rm_package_params <- function(package=NULL){
 #'
 #' @param package package to register parameter to
 #' @param default_value default value of the parameter (default: NULL)
-#'
+#' @param override override current loaded parameters
+#' 
 #' @examples
 #' register_param('param1', 'tgconfig')
 #' get_package_params('tgconfig')
 #'
 #' @export
-register_param <- function(param, package=NULL, default_value=NULL){
+register_param <- function(param, package=NULL, default_value=NULL, override=FALSE){
 	package <- package %||% guess_package(parent.frame(n=2))
-	if (!has_param(param, package)){
+	if (!has_param(param, package) || override){
 		set_config(param, default_value, package)
 	}
 }
@@ -249,8 +250,8 @@ override_params <- function(config_file, package=NULL){
 #' Register parameters from config file
 #'
 #' @param config_file yaml file with parameters and values
-#'
 #' @param package package
+#' @param override override current loaded parameters
 #'
 #' @examples
 #' config_file <- example_config_file()
@@ -258,14 +259,14 @@ override_params <- function(config_file, package=NULL){
 #' get_package_params('tgconfig')
 #'
 #' @export
-register_params <- function(config_file, package=NULL){
+register_params <- function(config_file, package=NULL, override=FALSE){
 	package <- package %||% guess_package(parent.frame(n=2))
 
 	for (conf_file in config_file){
 		conf <- yaml::yaml.load_file(config_file, eval.expr=TRUE)
 		params <- names(conf)
 		for (i in 1:length(conf)){
-			register_param(params[i], default_value=conf[[params[i]]], package=package)
+			register_param(params[i], default_value=conf[[params[i]]], package=package, override=override)
 		}
 	}
 }
