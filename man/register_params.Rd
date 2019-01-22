@@ -4,12 +4,14 @@
 \alias{register_params}
 \title{Register parameters from config file}
 \usage{
-register_params(config_file, package = NULL)
+register_params(config_file, package = NULL, override = FALSE)
 }
 \arguments{
 \item{config_file}{yaml file with parameters and values}
 
 \item{package}{package}
+
+\item{override}{override current loaded parameters}
 }
 \description{
 Register parameters from config file

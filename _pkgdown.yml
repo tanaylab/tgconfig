@@ -1,15 +1,13 @@
-navbar:
-  title: "tgconfig"
+navbar:  
   type: inverse
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Reference"
-      href: reference/index.html
-      icon: fa-th-list
-  right:
-    - icon: fa-bitbucket-square
-      href: https://bitbucket.org/tanaylab/tgconfig
+  structure:
+    left:
+      - home    
+      - reference        
+      - usage
+    right:
+      - icon: fa-bitbucket-square
+        href: https://bitbucket.org/tanaylab/tgconfig
 
 
 

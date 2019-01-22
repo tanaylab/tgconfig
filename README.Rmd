@@ -22,6 +22,11 @@ The goal of tgconfig is to provide infrastructure for managing package parameter
 
 code can be found at https://bitbucket.org/tanaylab/tgconfig
 
+## Installation
+```{r, eval=FALSE}
+install.packages('tgconfig', repos=c(getOption('repos'), 'https://tanaylab.bitbucket.io/repo'))
+```
+
 ## Usage
 
 Parameters are easy to get in relevant functions within a package:
