@@ -1,6 +1,6 @@
 Package: tgconfig
 Title: Infrastructure for managing package parameters
-Version: 0.0.1
+Version: 0.1.0
 Authors@R: c(person("Aviezer", "Lifshitz", email = "aviezer.lifshitz@weizmann.ac.il",
     role = c("aut", "cre")),
     person("Amos", "Tanay", role=c("aut")))
