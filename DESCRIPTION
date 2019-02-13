@@ -1,6 +1,6 @@
 Package: tgconfig
 Title: Infrastructure for managing package parameters
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(person("Aviezer", "Lifshitz", email = "aviezer.lifshitz@weizmann.ac.il",
     role = c("aut", "cre")),
     person("Amos", "Tanay", role=c("aut")))
@@ -10,7 +10,7 @@ Depends: R (>= 3.2.4)
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: yaml
+Imports: yaml (>= 2.2.0)
 RoxygenNote: 6.1.1
 Suggests: testthat
 Repository: tg
