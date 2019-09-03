@@ -15,7 +15,8 @@ knitr::opts_chunk$set(
 ```
 
 <!-- badges: start -->
-  [![Travis build status](https://travis-ci.org/tanaylab/tgconfig.svg?branch=master)](https://travis-ci.org/tanaylab/tgconfig)
+  [![Travis build status](https://travis-ci.com/tanaylab/tgconfig.svg?branch=master)](https://travis-ci.org/tanaylab/tgconfig)
+[![Codecov test coverage](https://codecov.io/gh/tanaylab/tgconfig/branch/master/graph/badge.svg)](https://codecov.io/gh/tanaylab/tgconfig?branch=master)
 <!-- badges: end -->
 
 

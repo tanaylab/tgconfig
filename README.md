@@ -1,15 +1,22 @@
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/tanaylab/tgconfig.svg?branch=master)](https://travis-ci.org/tanaylab/tgconfig) <!-- badges: end -->
+
+[![Travis build
+status](https://travis-ci.com/tanaylab/tgconfig.svg?branch=master)](https://travis-ci.org/tanaylab/tgconfig)
+[![Codecov test
+coverage](https://codecov.io/gh/tanaylab/tgconfig/branch/master/graph/badge.svg)](https://codecov.io/gh/tanaylab/tgconfig?branch=master)
+<!-- badges: end -->
 
 tgconfig
 ========
 
-The goal of tgconfig is to provide infrastructure for managing package parameters, inspired by [pgkconfig](https://github.com/r-lib/pkgconfig)
+The goal of tgconfig is to provide infrastructure for managing package
+parameters, inspired by [pgkconfig](https://github.com/r-lib/pkgconfig)
 
 Code
 ----
 
-code can be found at <https://github.com/tanaylab/tgconfig>
+code can be found at
+<a href="https://github.com/tanaylab/tgconfig" class="uri">https://github.com/tanaylab/tgconfig</a>
 
 Installation
 ------------
@@ -38,7 +45,8 @@ get_param_strict('another', 'scrdb')
 #> Error in get_param(param, package = package, fallback = stop(sprintf("there is no parameter \"%s\" in package \"%s\"", : there is no parameter "another" in package "scrdb"
 ```
 
-Developers are able to register parameters and set their default value in a config file that is part of the package in YAML format:
+Developers are able to register parameters and set their default value
+in a config file that is part of the package in YAML format:
 
     char_param: value
     expr_param: !expr seq(1:5)
@@ -91,7 +99,8 @@ get_package_params('scrdb')
 #> [1] FALSE
 ```
 
-Users get an exception when trying to override a parameter that was not registered:
+Users get an exception when trying to override a parameter that was not
+registered:
 
 ``` r
 set_param('other_param', 'value', 'scrdb')
