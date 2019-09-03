@@ -1,3 +1,6 @@
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/tanaylab/tgconfig.svg?branch=master)](https://travis-ci.org/tanaylab/tgconfig) <!-- badges: end -->
+
 tgconfig
 ========
 
@@ -12,7 +15,7 @@ Installation
 ------------
 
 ``` r
-install.packages('tgconfig', repos=c(getOption('repos'), 'https://tanaylab.bitbucket.io/repo'))
+install.packages('tgconfig', repos=c(getOption('repos'), 'https://tanaylab.github.io/repo'))
 ```
 
 Usage
@@ -50,16 +53,16 @@ get_package_params('scrdb')
 #> [1] "value"
 #> 
 #> $char_param
-#> [1] "user_char"
+#> [1] "value"
 #> 
 #> $expr_param
-#> [1] "user_exp"
+#> [1] 1 2 3 4 5
 #> 
 #> $numeric_param
-#> [1] 700
+#> [1] 500
 #> 
 #> $boolean_param
-#> [1] FALSE
+#> [1] TRUE
 ```
 
 Users are able to override parameters using their own YAML:

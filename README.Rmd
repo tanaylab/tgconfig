@@ -29,7 +29,7 @@ code can be found at https://github.com/tanaylab/tgconfig
 
 ## Installation
 ```{r, eval=FALSE}
-install.packages('tgconfig', repos=c(getOption('repos'), 'https://tanaylab.bitbucket.io/repo'))
+install.packages('tgconfig', repos=c(getOption('repos'), 'https://tanaylab.github.io/repo'))
 ```
 
 ## Usage
